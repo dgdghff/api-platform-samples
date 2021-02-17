@@ -1,28 +1,28 @@
 var express = require('express')
-const sayHello = require('say-hello')
+const sayHello = require('say-hi')
 var app = express()
 
 app.get('/', function (req, res) {
-  res.json({ hello: "Hello World! Hola Mundo! Bonjour le monde!" })
+  res.json({ hi: "Hi World! Hi Mundo! Hi le monde!" })
 })
 
-app.get('/hello/:language', function (req, res) {
+app.get('/hi/:language', function (req, res) {
   var language = req.params.language
-  var message = "This is how you say hello in " + language + ": "
+  var message = "This is how you say hi in " + language + ": "
   switch (language.toLowerCase()) {
     case 'spanish':
-      message += sayHello.spanish()
+      message += sayHi.spanish()
       break
     case 'french':
-      message += sayHello.french()
+      message += sayHi.french()
       break
     case 'english':
-      message += sayHello.english()
+      message += sayHi.english()
       break
     default:
-      message = "Sorry, unable say hello in the language: " + language
+      message = "Sorry, unable say hi in the language: " + language
   }
-  res.json({ hello: message })
+  res.json({ hi: message })
 })
 
 var server = app.listen(process.env.PORT || 9000, function () {
